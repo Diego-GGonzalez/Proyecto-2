@@ -5,6 +5,7 @@
 package proyecto.pkg2;
 
 import java.util.HashMap;
+import static proyecto.pkg2.Proyecto2.arbol;
 
 /**
  *
@@ -15,6 +16,7 @@ public class ListaArbol {
     NodoArbol raiz;
     private HashMap<String, NodoArbol> mapaNodosNombre; // Mapa para búsqueda eficiente
     private HashMap<String, NodoArbol> mapaNodosApodo;
+    private Lista gente;
 
     public ListaArbol(String nombreRaiz) {
         this.raiz = new NodoArbol(nombreRaiz);
@@ -119,15 +121,74 @@ public class ListaArbol {
 
     private void imprimirRecursivo(NodoArbol nodo, int nivel) {
         if (nodo == null) return;
-
+        int j = 0;
         for (int i = 0; i < nivel; i++) {
             System.out.print("  ");
+           
         }
-        System.out.println(nodo.nombre);
+        String original = nodo.nombre;
+        // Expresión regular para insertar espacios antes de mayúsculas y números
+        String resultado = original.replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+        
+        System.out.println(resultado+" nivel: "+nivel);
 
         for (Nodo<NodoArbol> hijo : nodo.hijos.toArray()) {
             
             imprimirRecursivo(hijo.getElement(), nivel + 1);
+        }
+    }
+    
+    public Lista ListadoGeneral(){
+        gente =new Lista();
+        ListadoGeneralRecursivo(raiz, 0);
+        return gente;
+    }
+    
+    private void ListadoGeneralRecursivo(NodoArbol nodo, int nivel) {
+        if (nodo == null) return;
+        gente.agregar(nodo);
+        
+        for (Nodo<NodoArbol> hijo : nodo.hijos.toArray()) {
+            
+            ListadoGeneralRecursivo(hijo.getElement(), nivel + 1);
+        }
+    }
+    
+    public Lista ListadoAntepasados(String Nombre){
+        NodoArbol nodobuscado = arbol.buscar(Nombre);
+        gente =new Lista();
+        ListadoAntepasadosRecursivo(false, nodobuscado, raiz, 0);
+        return gente;
+    }
+    
+    private void ListadoAntepasadosRecursivo(boolean encontrado, NodoArbol nodobuscado, NodoArbol nodo, int nivel) {
+        if (nodo == null) return;
+        gente.agregar(nodo);
+        if (encontrado) return;
+        if (nodobuscado == nodo) return;
+        
+        for (Nodo<NodoArbol> hijo : nodo.hijos.toArray()) {
+            if (nodobuscado==hijo.getElement()) {
+                encontrado=true;
+            }
+        }
+        for (Nodo<NodoArbol> hijo : nodo.hijos.toArray()) {
+            ListadoAntepasadosRecursivo(encontrado, nodobuscado, hijo.getElement(), nivel + 1);
+        }
+    }
+    
+    public Lista ListadoGeneracion(int nivel){
+        gente =new Lista();
+        ListadoGeneracionRecursivo(nivel, raiz, 0);
+        return gente;
+    }
+    
+    private void ListadoGeneracionRecursivo(int nivelbuscado, NodoArbol nodo, int nivel) {
+        if (nodo == null) return;
+        if (nivel == nivelbuscado) gente.agregar(nodo);
+        
+        for (Nodo<NodoArbol> hijo : nodo.hijos.toArray()) {
+            ListadoGeneracionRecursivo(nivelbuscado, hijo.getElement(), nivel + 1);
         }
     }
 }

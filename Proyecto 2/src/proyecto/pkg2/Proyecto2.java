@@ -15,17 +15,12 @@ public class Proyecto2 {
     public static File Targaryen = new File("src\\Archivos\\Targaryen.json");
     public static File Familia = new File("src\\Archivos\\Familia.txt");
     public static Grafo miGrafo;
-//    public static Lista<Persona> verticesList = new Lista();
-    public static Lista aristasList = new Lista();
     public static ListaArbol arbol;
 
         
-public static Grafo extraerGrafo(File file) {
-        // TODO code application logic here
+public static ListaArbol extraerArbol(File file) {
 //        
         Grafo res = null;
-//        verticesList = new Lista();
-        aristasList = new Lista();
         //scanea el file
          try {
             Scanner scanner = new Scanner(file);
@@ -184,7 +179,7 @@ public static Grafo extraerGrafo(File file) {
             }
              System.out.println("hola");
             arbol.imprimirArbol();
-             return res;   
+             return arbol;   
             } catch (Exception e) {
                 System.out.println(e);
             }
