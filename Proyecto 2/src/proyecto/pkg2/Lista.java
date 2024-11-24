@@ -14,25 +14,6 @@ public class Lista<E> {
     private Nodo<E> plast;
     private int size;
     
-
-    public void insertarInicio(E x){
-        size++;
-        if(pfirst != null){
-            pfirst = new Nodo(x, pfirst);
-        }
-        else plast = pfirst = new Nodo(x, null);
-    }
-    
-    public void insertarFinal(E x){
-        size++;
-        if(plast != null) {
-            plast.setPnext(new Nodo(x, null));
-            plast = plast.getPnext();
-        }
-        else {
-            plast = pfirst = new Nodo(x, null);
-        }
-    }
     
     public void agregar(E x){
         size++;
@@ -43,6 +24,32 @@ public class Lista<E> {
         else {
             plast = pfirst = new Nodo(x, null);
         }
+    }
+    
+    public void agregar(String nombre, E x){
+        
+        if(plast != null) {
+            plast.setPnext(new Nodo(nombre, x, null));
+            plast = plast.getPnext();
+        }
+        else {
+            plast = pfirst = new Nodo(nombre, x, null);
+            
+        }
+        size++;
+    }
+    
+    public Nodo<E> get(String id){
+        
+        Nodo<E> actual = pfirst;
+        while(actual != null){
+            if (actual.getId().contains(id)) {
+               return actual;
+           }
+           actual = actual.getPnext();
+            
+       }
+       return null;
     }
     
     public int size(){

@@ -9,12 +9,31 @@ package proyecto.pkg2;
  * @author Fabián Espinoza
  */
 public class Nodo<E> {
+    private String id;
     private E element;
     private Nodo pnext;
     
     public Nodo(E element, Nodo pnext){
         this.element = element;
         this.pnext = pnext;
+    }
+    
+    public Nodo(String nombre, E element, Nodo pnext){
+        this.id = nombre;
+        this.element = element;
+        this.pnext = pnext;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setElement(E element) {
+        this.element = element;
     }
     
     public E getElement() {return element;}

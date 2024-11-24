@@ -20,7 +20,7 @@ public class Proyecto2 {
         
 public static ListaArbol extraerArbol(File file) {
 //        
-        Grafo res = null;
+        
         //scanea el file
          try {
             Scanner scanner = new Scanner(file);
@@ -182,6 +182,7 @@ public static ListaArbol extraerArbol(File file) {
              return arbol;   
             } catch (Exception e) {
                 System.out.println(e);
+                e.printStackTrace();
             }
 //            
         

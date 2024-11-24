@@ -16,7 +16,7 @@ public class pruebas_borrar {
         arbol = Proyecto2.extraerArbol(Baratheon);
         
         String original = arbol.buscar("SteffonBaratheon2").nombre;
-//        // Expresión regular para insertar espacios antes de mayúsculas y números
+        // Expresión regular para insertar espacios antes de mayúsculas y números
         String resultado = original.replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
         
         System.out.println(resultado);

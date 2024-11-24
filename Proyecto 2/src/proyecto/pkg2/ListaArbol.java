@@ -4,9 +4,9 @@
  */
 package proyecto.pkg2;
 
-import java.util.HashMap;
-import static proyecto.pkg2.Proyecto2.arbol;
 
+import static proyecto.pkg2.Proyecto2.arbol;
+import proyecto.pkg2.Lista.*;
 /**
  *
  * @author Diego
@@ -14,21 +14,24 @@ import static proyecto.pkg2.Proyecto2.arbol;
 
 public class ListaArbol {
     NodoArbol raiz;
-    private HashMap<String, NodoArbol> mapaNodosNombre; // Mapa para búsqueda eficiente
-    private HashMap<String, NodoArbol> mapaNodosApodo;
+    private Lista<NodoArbol> mapaNodosNombre; // Mapa para búsqueda eficiente
+    private Lista<NodoArbol> mapaNodosApodo;
     private Lista gente;
 
     public ListaArbol(String nombreRaiz) {
         this.raiz = new NodoArbol(nombreRaiz);
-        this.mapaNodosNombre = new HashMap<>();
-        this.mapaNodosApodo = new HashMap<>();
-        mapaNodosNombre.put(nombreRaiz, raiz);
+        this.mapaNodosNombre = new Lista<NodoArbol>();
+        this.mapaNodosApodo = new Lista<NodoArbol>();
+        mapaNodosNombre.agregar(nombreRaiz, raiz);
+        mapaNodosApodo.agregar(nombreRaiz, raiz);
+        System.out.println(mapaNodosNombre.size());
     }
     
     public void agregarHijo(String nombrePadre,  String nombreHijo, Object[] array) {
-        NodoArbol padre = mapaNodosNombre.get(nombrePadre);
+        Nodo<NodoArbol> padre1 = mapaNodosNombre.get(nombrePadre);
         
-        if (padre != null) {
+        if (padre1 != null) {
+            NodoArbol padre = padre1.getElement();
             String numerohijo = array[1].toString();
             if (numerohijo.contains("First")) {
                             numerohijo = "1";
@@ -49,15 +52,14 @@ public class ListaArbol {
                 NodoArbol hijo = new NodoArbol(nombreHijo+numerohijo);
             padre.agregarHijo(hijo);
             hijo.setData(array);
-            mapaNodosNombre.put(nombreHijo+numerohijo, hijo); // Agregar al mapa
+            mapaNodosNombre.agregar(nombreHijo+numerohijo, hijo); // Agregar al mapa
             if (array[4]!=null) {
-                mapaNodosApodo.put(array[4].toString()+"1", hijo); // Agregar al mapa
+                mapaNodosApodo.agregar(array[4].toString()+"1", hijo); // Agregar al mapa
             }
-            
-            
-            
-        }else {padre = mapaNodosApodo.get(nombrePadre);
-        if (padre != null) {
+        }else {padre1 = mapaNodosApodo.get(nombrePadre);
+        if (padre1 != null) {
+            NodoArbol padre = padre1.getElement();
+            System.out.println("entro");
             String numerohijo = array[1].toString();
             if (numerohijo.contains("First")) {
                             numerohijo = "1";
@@ -77,22 +79,21 @@ public class ListaArbol {
             NodoArbol hijo = new NodoArbol(nombreHijo+numerohijo);
             padre.agregarHijo(hijo);
             hijo.setData(array);
-            mapaNodosNombre.put(nombreHijo+numerohijo, hijo); // Agregar al mapa
+            mapaNodosNombre.agregar(nombreHijo+numerohijo, hijo); // Agregar al mapa
             if (array[4]!=null) {
-                mapaNodosApodo.put(array[4].toString()+"1", hijo); // Agregar al mapa
+                mapaNodosApodo.agregar(array[4].toString()+"1", hijo); // Agregar al mapa
             }
-        }}if(padre==null){
+        }}if(padre1==null){
             System.out.println("No se encontró el nodo padre: " + nombrePadre);  
         }
     }
     
      public void agregarHijoprimero(String nombreHijo, Object[] array) {
-        NodoArbol padre = mapaNodosNombre.get(raiz.getNombre());
+        NodoArbol padre = mapaNodosNombre.get(raiz.getNombre()).getElement();
         NodoArbol hijo = new NodoArbol(nombreHijo);
         padre.agregarHijo(hijo);
         hijo.setData(array);
-        mapaNodosNombre.put(nombreHijo+"1", hijo); // Agregar al mapa
-        
+        mapaNodosNombre.agregar(nombreHijo+"1", hijo); // Agregar al mapa
     }
     
      
@@ -106,10 +107,12 @@ public class ListaArbol {
     
     public NodoArbol buscar(String nombre) {
         if (mapaNodosNombre.get(nombre)!=null) {
-            return mapaNodosNombre.get(nombre); // Búsqueda en tiempo O(1)
+            return mapaNodosNombre.get(nombre).getElement(); // Búsqueda en tiempo O(1)
         }else if (mapaNodosApodo.get(nombre)!=null) {
-            return mapaNodosApodo.get(nombre); // Búsqueda en tiempo O(1)
+            return mapaNodosApodo.get(nombre).getElement(); // Búsqueda en tiempo O(1)
         }else{
+            System.out.println("holssssasd");
+            System.out.println(mapaNodosNombre.get(nombre));
             return null;
         }
         
