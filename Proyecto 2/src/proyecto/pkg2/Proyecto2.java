@@ -13,7 +13,7 @@ public class Proyecto2 {
 
     public static File Baratheon = new File("src\\Archivos\\Baratheon.json");
     public static File Targaryen = new File("src\\Archivos\\Targaryen.json");
-    public static File Familia = new File("src\\Archivos\\Familia.txt");
+    public static File Familia;
     public static Grafo miGrafo;
     public static ListaArbol arbol;
 
@@ -151,14 +151,14 @@ public static ListaArbol extraerArbol(File file) {
                     
                     if (line.contains("Notes")) {
                         String resultado = line.replace("Notes", "");
-                    resultado = resultado.replace(" ", "");
+                    resultado = resultado.replaceAll("\\s+", " ").trim();
                     resultado = resultado.replaceAll("[{}<\">:]", "");
                     array[10] = resultado;
                     }
                     
                     if (line.contains("Fate")) {
                        String resultado = line.replace("Fate", "");
-                    resultado = resultado.replace(" ", "");
+                    resultado = resultado.replaceAll("\\s+", " ").trim();
                     resultado = resultado.replaceAll("[{}<\">:]", "");
                     array[11] = resultado; 
                     }
@@ -177,8 +177,6 @@ public static ListaArbol extraerArbol(File file) {
                 
                 line = scanner.nextLine();
             }
-             System.out.println("hola");
-            arbol.imprimirArbol();
              return arbol;   
             } catch (Exception e) {
                 System.out.println(e);

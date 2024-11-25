@@ -39,11 +39,30 @@ public class Lista<E> {
         size++;
     }
     
+    public void insertarInicio(E x){
+        size++;
+        if(pfirst != null){
+            pfirst = new Nodo(x, pfirst);
+        }
+        else plast = pfirst = new Nodo(x, null);
+    }
+    
+    public void insertarFinal(E x){
+        size++;
+        if(plast != null) {
+            plast.setPnext(new Nodo(x, null));
+            plast = plast.getPnext();
+        }
+        else {
+            plast = pfirst = new Nodo(x, null);
+        }
+    }
+    
     public Nodo<E> get(String id){
         
         Nodo<E> actual = pfirst;
         while(actual != null){
-            if (actual.getId().contains(id)) {
+            if (actual.getId().toLowerCase().contains(id.toLowerCase())) {
                return actual;
            }
            actual = actual.getPnext();
@@ -55,6 +74,20 @@ public class Lista<E> {
     public int size(){
         return size;
     }
+    
+    public Nodo[] getavan(String id){
+        Lista lista = new Lista();
+        Nodo<E> actual = pfirst;
+        while(actual != null){
+            if (actual.getId().toLowerCase().contains(id.toLowerCase())) {
+               lista.agregar(actual.getId(), actual);
+           }
+           actual = actual.getPnext();
+            
+       }
+       return lista.toArray();
+    }
+        
     
     public boolean contains(E e){
         Nodo actual = pfirst;

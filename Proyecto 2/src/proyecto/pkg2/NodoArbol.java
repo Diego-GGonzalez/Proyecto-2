@@ -9,10 +9,10 @@ package proyecto.pkg2;
  * @author Diego
  */
 public class NodoArbol {
-    String nombre;
-    NodoArbol padre; 
-    Object[] data;
-    Lista<NodoArbol> hijos; 
+    public String nombre;
+    public NodoArbol padre; 
+    public Object[] data;
+    public Lista<NodoArbol> hijos; 
     
     public NodoArbol(String nombre){
         this.nombre = nombre;

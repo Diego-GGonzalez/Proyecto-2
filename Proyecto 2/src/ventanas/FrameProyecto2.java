@@ -4,6 +4,14 @@
  */
 package ventanas;
 
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import proyecto.pkg2.*;
+import proyecto.pkg2.Proyecto2;
+import static proyecto.pkg2.Proyecto2.*;
+
 /**
  *
  * @author Diego
@@ -26,22 +34,401 @@ public class FrameProyecto2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        buscar = new javax.swing.JButton();
+        nombres = new javax.swing.JComboBox<>();
+        seleccionar = new javax.swing.JButton();
+        EscogerFamilia = new javax.swing.JButton();
+        nombre = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        nombreFam = new javax.swing.JLabel();
+        listafamilia = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        antepasados = new javax.swing.JButton();
+        nivel = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        gneracion = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        buscar.setText("buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+
+        seleccionar.setText("Inspeccionar");
+        seleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionarActionPerformed(evt);
+            }
+        });
+
+        EscogerFamilia.setText("Escoger Familia");
+        EscogerFamilia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EscogerFamiliaActionPerformed(evt);
+            }
+        });
+
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Nombre:");
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Seleccione la persona por examinar");
+        jLabel2.setToolTipText("");
+        jLabel2.setAutoscrolls(true);
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText(" y pulse el boton \"Inspeccionar\"");
+        jLabel3.setToolTipText("");
+        jLabel3.setAutoscrolls(true);
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel4.setText("Familia: ");
+
+        nombreFam.setText("No seleccionada");
+
+        listafamilia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Baratheon", "Targaryen", "Otro" }));
+        listafamilia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listafamiliaActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Familia: ");
+
+        antepasados.setText("Ver antepasados");
+        antepasados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                antepasadosActionPerformed(evt);
+            }
+        });
+
+        nivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nivelActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("numero de generacion:");
+
+        gneracion.setText("aceptar");
+        gneracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gneracionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombre)
+                .addGap(220, 220, 220))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(antepasados, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nombreFam, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(listafamilia, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(EscogerFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(buscar)
+                                .addGap(277, 277, 277)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(seleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(gneracion)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buscar)
+                    .addComponent(jLabel2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(antepasados))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(seleccionar)
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(nivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(gneracion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(EscogerFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(listafamilia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(234, 234, 234)
+                        .addComponent(nombreFam)
+                        .addGap(55, 55, 55))))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_nombreActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        nombres.removeAllItems();
+        Nodo[] list = arbol.buscaravan(nombre.getText());
+        if (list!=null) {
+            
+        
+        for (int i = 0; i < list.length; i++) {
+            String nombre = list[i].getId();
+            String resultado = nombre.replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+            nombres.addItem(resultado);
+        }}else{
+JOptionPane.showMessageDialog(null, "Error: no se encontro");
+}
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void seleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarActionPerformed
+        String selec = nombres.getSelectedItem().toString();
+        
+
+        Object[] nodo = arbol.buscar(selec.replaceAll(" ", "")).getData();
+        if (nodo!=null) {
+            
+        
+        String data = "";
+        for (int i = 0; i < nodo.length; i++) {
+            if (nodo[i]!=null) {
+            if (i==0) {
+            String nombre = nodo[i].toString().replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+            data = data+"name: " +nombre+"\n";
+            
+            }else if (i==1) {
+            String apodo = nodo[i].toString().replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+                
+            data = data+"Of his name: "+apodo+"\n";
+            
+            }else if (i==2) {
+            String nombre = nodo[i].toString().replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+            data = data+"Born to: " +nombre+"\n";                
+                
+            }else if (i==3) {
+            String nombre = nodo[i].toString().replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+            data = data+"Born to: " +nombre+"\n"; 
+                
+            }else if (i==4) {
+            String nombre = nodo[i].toString().replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+            data = data+"Known throughout as: " +nombre+"\n"; 
+                
+                
+            }else if (i==5) {
+                String nombre = nodo[i].toString().replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+            data = data+"Held title: " +nombre+"\n"; 
+            
+                
+            }else if (i==6) {
+                String nombre = nodo[i].toString().replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+            data = data+"Wed to: " +nombre+"\n"; 
+                
+                
+            }else if (i==7) {
+                String nombre = nodo[i].toString().replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+            data = data+"Of eyes: " +nombre+"\n"; 
+                
+                
+            }else if (i==8) {
+                String nombre = nodo[i].toString().replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+            data = data+"Of hair: " +nombre+"\n"; 
+                
+                
+            }else if (i==9) {
+                data = data+"Father to: \n"; 
+                for (Nodo hijos : (Nodo[]) nodo[i]) {
+                    String hijo = hijos.getElement().toString();
+                String nombre = hijo.toString().replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+                    data = data+"       "+nombre+"\n"; 
+                }
+            
+                
+            }else if (i==10) {
+                String nombre = nodo[i].toString();
+            data = data+"Notes: " +nombre+"\n"; 
+                
+            }else if (i==11) {
+                String nombre = nodo[i].toString();
+            data = data+"Fate: " +nombre+"\n";
+            }}
+        }
+        JOptionPane.showMessageDialog(null, data);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error: no se encontro");
+        }
+    }//GEN-LAST:event_seleccionarActionPerformed
+
+    private void EscogerFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EscogerFamiliaActionPerformed
+        String linea = listafamilia.getItemAt(listafamilia.getSelectedIndex());
+        
+        if (linea=="Baratheon") {
+          arbol = extraerArbol(Baratheon);
+        }else if (linea=="Targaryen") {
+          arbol = extraerArbol(Targaryen);
+        }else{
+            try{
+        JFileChooser file=new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto","json");
+        file.setFileFilter(filter);
+       
+        file.showOpenDialog(file);
+        File archivo=file.getSelectedFile();
+        int result = file.getDialogType();
+        if (result == JFileChooser.APPROVE_OPTION) {
+        arbol = extraerArbol(archivo);
+        }else{
+             JOptionPane.showMessageDialog(null, "La carga de archivo se ha cancelado");
+             
+        }
+            if (arbol==null) {
+               JOptionPane.showMessageDialog(null, "Error");
+            }
+         
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error\ninsertar un archivo compatible");
+        }
+        }
+    }//GEN-LAST:event_EscogerFamiliaActionPerformed
+
+    private void listafamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listafamiliaActionPerformed
+                             
+    }//GEN-LAST:event_listafamiliaActionPerformed
+
+    private void antepasadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_antepasadosActionPerformed
+        String selec = nombres.getSelectedItem().toString();
+        Lista dataAntepasada = arbol.ListadoAntepasados(selec.replaceAll(" ", ""));
+        if (dataAntepasada !=null) {
+            String data = "";
+        for (Nodo<NodoArbol> nodo : dataAntepasada.toArray()) {
+            String datos = nodo.getElement().nombre.replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+            data = data + datos+"\n";
+        }
+        JOptionPane.showMessageDialog(null, data);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        
+        
+    }//GEN-LAST:event_antepasadosActionPerformed
+
+    private void nivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nivelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nivelActionPerformed
+
+    private void gneracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gneracionActionPerformed
+        
+        if (isNumeric(nivel.getText())) {
+            int selec = Integer.parseInt(nivel.getText());
+               
+        
+        Lista datageneracion = arbol.ListadoGeneracion(selec);
+        
+            String data = "";
+        for (Nodo<NodoArbol> nodo : datageneracion.toArray()) {
+            String datos = nodo.getElement().nombre.replaceAll("(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\\d)", " ");
+            data = data + datos+"\n";
+        }
+        JOptionPane.showMessageDialog(null, data);        
+        }else{
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        
+    }//GEN-LAST:event_gneracionActionPerformed
+
+    
+    public static boolean isNumeric(String str) { 
+        if (str == null) { 
+            return false; 
+        } 
+        try { 
+            Integer.parseInt(str); 
+            return true; 
+        } catch (NumberFormatException e) { 
+            return false;
+    }}
     /**
      * @param args the command line arguments
      */
@@ -68,7 +455,7 @@ public class FrameProyecto2 extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrameProyecto2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        arbol = Proyecto2.extraerArbol(Baratheon);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -78,5 +465,22 @@ public class FrameProyecto2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton EscogerFamilia;
+    private javax.swing.JButton antepasados;
+    private javax.swing.JButton buscar;
+    private javax.swing.JButton gneracion;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> listafamilia;
+    private javax.swing.JTextField nivel;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JLabel nombreFam;
+    private javax.swing.JComboBox<String> nombres;
+    private javax.swing.JButton seleccionar;
     // End of variables declaration//GEN-END:variables
 }

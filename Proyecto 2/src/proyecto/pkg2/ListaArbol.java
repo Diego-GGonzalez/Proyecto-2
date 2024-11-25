@@ -59,7 +59,6 @@ public class ListaArbol {
         }else {padre1 = mapaNodosApodo.get(nombrePadre);
         if (padre1 != null) {
             NodoArbol padre = padre1.getElement();
-            System.out.println("entro");
             String numerohijo = array[1].toString();
             if (numerohijo.contains("First")) {
                             numerohijo = "1";
@@ -111,11 +110,20 @@ public class ListaArbol {
         }else if (mapaNodosApodo.get(nombre)!=null) {
             return mapaNodosApodo.get(nombre).getElement(); // Búsqueda en tiempo O(1)
         }else{
-            System.out.println("holssssasd");
             System.out.println(mapaNodosNombre.get(nombre));
             return null;
         }
-        
+    }
+    
+    public Nodo[] buscaravan(String nombre) {
+        if (mapaNodosNombre.get(nombre)!=null) {
+            return mapaNodosNombre.getavan(nombre);
+        }else if (mapaNodosApodo.get(nombre)!=null) {
+            return mapaNodosApodo.getavan(nombre);
+        }else{
+            System.out.println(mapaNodosNombre.get(nombre));
+            return null;
+        }
     }
     
     public void imprimirArbol() {

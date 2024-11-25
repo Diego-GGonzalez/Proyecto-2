@@ -10,7 +10,7 @@ package proyecto.pkg2;
  */
 public class Nodo<E> {
     private String id;
-    private E element;
+    public E element;
     private Nodo pnext;
     
     public Nodo(E element, Nodo pnext){
